@@ -6,6 +6,7 @@ import { FifthRevIntro } from "@/sections/FifthRevIntro";
 import { TwoFrameworks } from "@/sections/TwoFrameworks";
 import { WhoWeHelpPreview } from "@/sections/WhoWeHelpPreview";
 import { ServicesPreview } from "@/sections/ServicesPreview";
+import { Interviews } from "@/components/Interviews";
 import { Faq } from "@/components/Faq";
 import { FinalCTA } from "@/components/FinalCTA";
 import { ExploreNext } from "@/components/ExploreNext";
@@ -51,6 +52,7 @@ export default function Home() {
       <TwoFrameworks />
       <WhoWeHelpPreview />
       <ServicesPreview />
+      <Interviews />
       <Faq
         tone="cream"
         items={faqs}

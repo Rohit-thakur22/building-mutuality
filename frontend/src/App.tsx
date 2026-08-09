@@ -12,6 +12,7 @@ import About from "@/pages/About";
 import Books from "@/pages/Books";
 import Ethos from "@/pages/Ethos";
 import Resources from "@/pages/Resources";
+import ResourceCategory from "@/pages/ResourceCategory";
 import Speaking from "@/pages/Speaking";
 import Contact from "@/pages/Contact";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/book" element={<Books />} />
           <Route path="/ethos" element={<Ethos />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/:slug" element={<ResourceCategory />} />
           <Route path="/speaking" element={<Speaking />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

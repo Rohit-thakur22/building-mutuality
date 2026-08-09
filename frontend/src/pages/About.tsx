@@ -1,20 +1,43 @@
 import { useState } from "react";
 import { useSeo } from "@/hooks/useSeo";
 import { motion, AnimatePresence } from "framer-motion";
-import { Award, MapPin, GraduationCap, ChevronDown } from "lucide-react";
+import {
+  Award, MapPin, GraduationCap, ChevronDown, Trophy, BookOpen, Star, Users, TrendingUp,
+} from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { StatCounter } from "@/components/StatCounter";
+import { Interviews } from "@/components/Interviews";
 import { Faq } from "@/components/Faq";
-import { ExploreNext } from "@/components/ExploreNext";
 import { CTABand } from "@/components/CTABand";
+import { ExploreNext } from "@/components/ExploreNext";
 import { EASE } from "@/lib/motion";
 
 const badges = [
   { icon: Award, label: "Visionaries Award" },
   { icon: MapPin, label: "Times Square Featured" },
   { icon: GraduationCap, label: "Harvard & UTS" },
+];
+
+const stats = [
+  { value: 30, prefix: "", suffix: "+", label: "years in leadership & trust" },
+  { value: 1.7, prefix: "", suffix: "M+", decimals: 1, label: "LinkedIn views in 90 days" },
+  { value: 1300, prefix: "", suffix: "+", label: "source-audited research cases" },
+  { value: 2, prefix: "", suffix: "", label: "published books" },
+];
+
+const credentials = [
+  { icon: GraduationCap, title: "Program Director, AGSM General Manager Program", note: "Adjunct Faculty, UNSW Business School" },
+  { icon: Trophy, title: "Financial Times #1 Ranked", note: "Best executive-education programme in Australia" },
+  { icon: Award, title: "CXO 2.0 Visionaries Award", note: "Dubai, December 2025" },
+  { icon: MapPin, title: "Times Square Feature", note: "New York billboard" },
+  { icon: GraduationCap, title: "MBA, University of Technology Sydney", note: "+ Harvard leadership & org-development certificate" },
+  { icon: Star, title: "Honorary Member", note: "Golden Key International Honour Society" },
+  { icon: Users, title: "Advisory Board", note: "MeetMagic" },
+  { icon: BookOpen, title: "Author of two books", note: "Mutuality & The 5th Revolution" },
+  { icon: TrendingUp, title: "1.7M+ views in 90 days", note: "Human-intelligence content on LinkedIn" },
 ];
 
 const moreParas = [
@@ -33,23 +56,21 @@ export default function About() {
   );
   return (
     <>
-      <PageHero eyebrow="About" title="About Matthew Byrne" />
+      <PageHero
+        eyebrow="About"
+        title="About Matthew Byrne"
+        intro="One of the leading global voices on integrating human intelligence and AI — advisor to boards and CEOs across Australia, the Asia-Pacific and the Middle East."
+      />
 
       <section className="section-padding bg-white">
         <div className="container-custom grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
             <ScrollReveal direction="right">
               <div className="lg:sticky lg:top-28">
-                <PlaceholderImage
-                  label="Matthew Byrne headshot — pending"
-                  className="w-full aspect-[4/5]"
-                />
+                <PlaceholderImage label="Matthew Byrne headshot — pending" className="w-full aspect-[4/5]" />
                 <div className="flex flex-wrap gap-2 mt-5">
                   {badges.map((b) => (
-                    <span
-                      key={b.label}
-                      className="inline-flex items-center gap-2 bg-cream border border-navy/10 rounded-full px-4 py-2 text-xs font-semibold text-navy"
-                    >
+                    <span key={b.label} className="inline-flex items-center gap-2 bg-cream border border-navy/10 rounded-full px-4 py-2 text-xs font-semibold text-navy">
                       <b.icon size={14} className="text-gold" />
                       {b.label}
                     </span>
@@ -60,7 +81,7 @@ export default function About() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="space-y-5 text-slate-custom leading-relaxed">
+            <div className="space-y-5 text-slate-custom leading-relaxed max-w-[65ch]">
               <ScrollReveal>
                 <p>
                   For over three decades, Matthew Byrne has worked at the intersection of leadership,
@@ -93,40 +114,67 @@ export default function About() {
                 )}
               </AnimatePresence>
 
-              <button
-                onClick={() => setExpanded(!expanded)}
-                className="link-underline mt-2"
-                data-testid="about-read-more"
-              >
+              <button onClick={() => setExpanded(!expanded)} className="link-underline mt-2" data-testid="about-read-more">
                 {expanded ? "Read less" : "Read more"}
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
-                />
+                <ChevronDown size={16} className={`transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
               </button>
             </div>
+
+            {/* Stat callouts */}
+            <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 pt-8 border-t border-navy/10">
+              {stats.map((s) => (
+                <StaggerItem key={s.label}>
+                  <p className="font-sora font-bold text-3xl text-gold leading-none">
+                    <StatCounter value={s.value} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals || 0} />
+                  </p>
+                  <p className="text-slate-custom text-xs mt-2 leading-snug">{s.label}</p>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
           </div>
         </div>
       </section>
+
+      {/* Credentials & Recognition */}
+      <section className="section-padding bg-cream">
+        <div className="container-custom">
+          <SectionHeading
+            eyebrow="Credentials & Recognition"
+            title={<>Two decades of <span className="text-gold">earned authority</span></>}
+            className="mb-12"
+          />
+          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {credentials.map((c) => (
+              <StaggerItem key={c.title}>
+                <div className="group h-full bg-white rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1.5 flex gap-4">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-navy flex items-center justify-center group-hover:bg-gold transition-colors duration-300">
+                    <c.icon className="text-gold group-hover:text-navy transition-colors duration-300" size={20} />
+                  </div>
+                  <div>
+                    <p className="font-sora font-semibold text-navy text-sm leading-snug">{c.title}</p>
+                    {c.note && <p className="text-slate-custom text-xs mt-1 leading-snug">{c.note}</p>}
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Interviews */}
+      <Interviews />
 
       {/* Daniane */}
       <section className="section-padding bg-cream">
         <div className="container-custom grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <ScrollReveal direction="right">
-              <PlaceholderImage
-                label="Daniane Fernandes headshot — pending"
-                className="w-full aspect-[4/5]"
-              />
+              <PlaceholderImage label="Daniane Fernandes headshot — pending" className="w-full aspect-[4/5]" />
             </ScrollReveal>
           </div>
           <div className="lg:col-span-8">
-            <SectionHeading
-              eyebrow="Associate"
-              title={<>Daniane Fernandes</>}
-              className="mb-6"
-            />
-            <div className="space-y-5 text-slate-custom leading-relaxed">
+            <SectionHeading eyebrow="Associate" title={<>Daniane Fernandes</>} className="mb-6" />
+            <div className="space-y-5 text-slate-custom leading-relaxed max-w-[65ch]">
               <ScrollReveal delay={0.05}>
                 <p>
                   Daniane brings an engineer's precision to the people side of the work. Her background
