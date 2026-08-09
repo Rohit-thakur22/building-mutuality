@@ -14,28 +14,11 @@ const stats = [
 export function ProofStrip() {
   return (
     <section data-testid="proof-strip">
-      {/* Strip */}
+      {/* Strip — lead with scannable stats */}
       <div className="bg-navy-dark">
         <div className="container-custom py-16 lg:py-20">
-          {/* Lead standfirst */}
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="max-w-3xl text-white/75 text-base md:text-lg leading-relaxed"
-          >
-            Home of the <span className="text-gold font-semibold">White Whale</span>,
-            the longitudinal AI implementation segmentation research project that
-            established best-practice AI integration: 1,300+ source-audited cases and
-            growing. Two decades of leadership research. Programmes delivered with
-            Perenti, the ATO, Calvary, McDonald's and DFAT. A new book,{" "}
-            <span className="text-gold font-semibold">The 5th Revolution</span>,
-            launches <span className="text-gold font-semibold">3 November</span>.
-          </motion.p>
-
           {/* Proof points */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6 mt-12 pt-10 border-t border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
             {stats.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -54,6 +37,23 @@ export function ProofStrip() {
               </motion.div>
             ))}
           </div>
+
+          {/* Supporting detail — demoted */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="max-w-3xl text-white/45 text-sm leading-relaxed mt-10 pt-8 border-t border-white/10"
+          >
+            Home of the <span className="text-gold/90 font-medium">White Whale</span>,
+            the longitudinal AI implementation segmentation research project that
+            established best-practice AI integration: 1,300+ source-audited cases and
+            growing. Two decades of leadership research. Programmes delivered with
+            Perenti, the ATO, Calvary, McDonald's and DFAT. A new book,{" "}
+            <span className="text-gold/90 font-medium">The 5th Revolution</span>,
+            launches <span className="text-gold/90 font-medium">3 November</span>.
+          </motion.p>
         </div>
       </div>
 

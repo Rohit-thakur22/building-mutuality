@@ -49,10 +49,10 @@ export default function Home() {
       <ProofStrip />
       <Testimonials />
       <FifthRevIntro />
+      <Interviews />
       <TwoFrameworks />
       <WhoWeHelpPreview />
       <ServicesPreview />
-      <Interviews />
       <Faq
         tone="cream"
         items={faqs}

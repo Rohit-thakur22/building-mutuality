@@ -62,7 +62,7 @@ export function HomeHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
-            className="mt-8 text-base md:text-lg text-white/80 max-w-2xl leading-relaxed"
+            className="mt-7 text-sm md:text-base text-white/65 max-w-xl leading-relaxed"
           >
             Every organisation is being handed a more powerful engine. Almost none
             are developing the driver. Building Mutuality is the home of The 5th

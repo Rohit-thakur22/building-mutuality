@@ -12,8 +12,8 @@ interface VideoItem {
 
 const videos: VideoItem[] = [
   {
-    type: "linkedin",
-    src: "https://www.linkedin.com/embed/feed/update/urn:li:activity:7490663256378806272",
+    type: "file",
+    src: "/videos/hi-leadership-trust.mp4",
     label: "Human Intelligence, leadership & trust",
     source: "LinkedIn",
   },

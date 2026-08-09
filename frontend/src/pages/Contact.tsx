@@ -23,6 +23,9 @@ const connect = [
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const API = process.env.REACT_APP_BACKEND_URL;
   useSeo(
     "Contact | Start a Conversation with Building Mutuality",
     "Get in touch with Matthew Byrne and Building Mutuality — for leadership programmes, executive coaching, culture audits, HI Accreditation, or speaking enquiries."
@@ -102,9 +105,32 @@ export default function Contact() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setSubmitted(true);
+                      setError("");
+                      setSubmitting(true);
+                      const fd = new FormData(e.currentTarget);
+                      const payload = {
+                        first_name: String(fd.get("first_name") || ""),
+                        last_name: String(fd.get("last_name") || ""),
+                        email: String(fd.get("email") || ""),
+                        organisation: String(fd.get("organisation") || ""),
+                        challenge: String(fd.get("challenge") || ""),
+                        message: String(fd.get("message") || ""),
+                      };
+                      try {
+                        const res = await fetch(`${API}/api/contact`, {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(payload),
+                        });
+                        if (!res.ok) throw new Error("Request failed");
+                        setSubmitted(true);
+                      } catch (err) {
+                        setError("Something went wrong. Please email matthew@mutuality.com.au directly.");
+                      } finally {
+                        setSubmitting(false);
+                      }
                     }}
                     className="space-y-5"
                     data-testid="contact-form"
@@ -112,24 +138,24 @@ export default function Contact() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-navy mb-2">First Name *</label>
-                        <input required className={inputCls} data-testid="input-first-name" />
+                        <input required name="first_name" className={inputCls} data-testid="input-first-name" />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-navy mb-2">Last Name *</label>
-                        <input required className={inputCls} data-testid="input-last-name" />
+                        <input required name="last_name" className={inputCls} data-testid="input-last-name" />
                       </div>
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-navy mb-2">Email *</label>
-                      <input type="email" required className={inputCls} data-testid="input-email" />
+                      <input type="email" required name="email" className={inputCls} data-testid="input-email" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-navy mb-2">Organisation *</label>
-                      <input required className={inputCls} data-testid="input-organisation" />
+                      <input required name="organisation" className={inputCls} data-testid="input-organisation" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-navy mb-2">Primary Challenge</label>
-                      <select required defaultValue="" className={inputCls} data-testid="select-challenge">
+                      <select required name="challenge" defaultValue="" className={inputCls} data-testid="select-challenge">
                         <option value="" disabled>Select an option</option>
                         {challenges.map((c) => (
                           <option key={c} value={c}>{c}</option>
@@ -138,10 +164,14 @@ export default function Contact() {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-navy mb-2">Message (optional)</label>
-                      <textarea rows={4} className={inputCls} data-testid="input-message" />
+                      <textarea rows={4} name="message" className={inputCls} data-testid="input-message" />
                     </div>
-                    <button type="submit" className="btn-primary w-full text-base" data-testid="contact-submit">
-                      Send Message <ArrowRight size={18} />
+                    {error && (
+                      <p className="text-destructive text-sm" data-testid="contact-error">{error}</p>
+                    )}
+                    <button type="submit" disabled={submitting} className="btn-primary w-full text-base disabled:opacity-60" data-testid="contact-submit">
+                      {submitting ? "Sending…" : "Send Message"}
+                      {!submitting && <ArrowRight size={18} />}
                     </button>
                   </motion.form>
                 )}
