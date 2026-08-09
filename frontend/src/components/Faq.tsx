@@ -12,23 +12,29 @@ export interface FaqItem {
 interface FaqProps {
   items: FaqItem[];
   dark?: boolean;
+  tone?: "white" | "cream" | "navy";
   eyebrow?: string;
   title?: React.ReactNode;
 }
 
-export function Faq({ items, dark = false, eyebrow = "Questions", title }: FaqProps) {
+export function Faq({ items, dark = false, tone, eyebrow = "Questions", title }: FaqProps) {
   const [open, setOpen] = useState<number | null>(0);
 
+  const isDark = dark || tone === "navy";
+  const sectionBg = tone === "cream" ? "bg-cream" : isDark ? "bg-navy" : "bg-white";
+  const cardBg = isDark
+    ? "border-white/12 bg-white/5"
+    : tone === "cream"
+    ? "border-navy/10 bg-white"
+    : "border-navy/10 bg-cream";
+
   return (
-    <section
-      className={`section-padding ${dark ? "bg-navy" : "bg-white"}`}
-      data-testid="faq-section"
-    >
-      <div className="container-custom max-w-4xl">
+    <section className={`section-padding ${sectionBg}`} data-testid="faq-section">
+      <div className="container-custom max-w-3xl">
         <SectionHeading
           eyebrow={eyebrow}
           title={title || <>Frequently asked <span className="text-gold">questions</span></>}
-          dark={dark}
+          dark={isDark}
           className="mb-10"
         />
         <div className="space-y-3">
@@ -41,9 +47,7 @@ export function Faq({ items, dark = false, eyebrow = "Questions", title }: FaqPr
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: i * 0.06, ease: EASE }}
-                className={`rounded-2xl border overflow-hidden ${
-                  dark ? "border-white/12 bg-white/5" : "border-navy/10 bg-cream"
-                }`}
+                className={`rounded-2xl border overflow-hidden ${cardBg}`}
                 data-testid={`faq-item-${i}`}
               >
                 <button
@@ -53,7 +57,7 @@ export function Faq({ items, dark = false, eyebrow = "Questions", title }: FaqPr
                 >
                   <span
                     className={`font-sora font-semibold text-base md:text-lg ${
-                      dark ? "text-white" : "text-navy"
+                      isDark ? "text-white" : "text-navy"
                     }`}
                   >
                     {item.q}
@@ -76,7 +80,7 @@ export function Faq({ items, dark = false, eyebrow = "Questions", title }: FaqPr
                     >
                       <p
                         className={`px-5 md:px-6 pb-5 leading-relaxed text-sm md:text-base ${
-                          dark ? "text-white/70" : "text-slate-custom"
+                          isDark ? "text-white/70" : "text-slate-custom"
                         }`}
                       >
                         {item.a}

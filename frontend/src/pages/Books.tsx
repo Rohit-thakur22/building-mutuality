@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const purchaseLinks = [
   { label: "Amazon", href: "#" },
@@ -121,6 +122,7 @@ export default function Books() {
         title={<>Book <span className="text-gold">questions</span></>}
         items={bookFaqs}
       />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "The 5th Revolution research", href: "/fifth-revolution" },

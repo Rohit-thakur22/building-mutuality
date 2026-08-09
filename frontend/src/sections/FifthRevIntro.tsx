@@ -1,51 +1,22 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { StatCounter } from "@/components/StatCounter";
-import { EASE } from "@/lib/motion";
 
 export function FifthRevIntro() {
   return (
     <section className="section-padding bg-cream" data-testid="fifth-rev-intro">
       <div className="container-custom">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Graphic */}
-          <ScrollReveal direction="right" className="lg:col-span-5">
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-card-hover">
-                <img
-                  src="/images/chart-gap.jpg"
-                  alt="The widening gap between AI acceleration and human capability"
-                  className="w-full h-[360px] md:h-[440px] object-cover"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
-              </div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
-                className="absolute -bottom-6 -right-4 md:-right-8 bg-navy text-white rounded-2xl px-6 py-5 shadow-gold border border-gold/20"
-              >
-                <p className="font-sora font-bold text-3xl text-gold">
-                  <StatCounter value={1300} suffix="+" />
-                </p>
-                <p className="text-white/60 text-xs mt-1">documented AI transitions</p>
-              </motion.div>
-            </div>
-          </ScrollReveal>
-
-          {/* Copy */}
-          <div className="lg:col-span-7">
+          {/* Copy — first in DOM (mobile-first), left on desktop via order */}
+          <div className="lg:col-span-7 lg:order-2">
             <ScrollReveal>
               <span className="eyebrow mb-4 block">The 5th Revolution Starts With People</span>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl text-navy leading-[1.1] mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl text-navy leading-[1.1] mb-6 max-w-xl">
                 Human intelligence is the <span className="text-gold">main story</span>
               </h2>
             </ScrollReveal>
-            <div className="space-y-5 text-slate-custom leading-relaxed">
+            <div className="space-y-5 text-slate-custom leading-relaxed max-w-[65ch]">
               <ScrollReveal delay={0.1}>
                 <p>
                   For thirty years, one question has sat underneath all of Matthew Byrne's
@@ -66,20 +37,41 @@ export function FifthRevIntro() {
               </ScrollReveal>
               <ScrollReveal delay={0.2}>
                 <p>
-                  Human intelligence is the main story. AI is the context in which that story
-                  must now be renewed. Together is better — and from the AGSM General Manager
-                  Program to a growing global network of research collaborations, the proof is
-                  already here.
+                  <span className="text-navy font-semibold">Human intelligence is the main story.</span>{" "}
+                  AI is the context in which that story must now be renewed.{" "}
+                  <span className="text-navy font-semibold">Together is better</span> — and from
+                  the AGSM General Manager Program to a growing global network of research
+                  collaborations, the proof is already here.
                 </p>
               </ScrollReveal>
             </div>
             <ScrollReveal delay={0.25}>
-              <Link to="/fifth-revolution" className="btn-secondary mt-8">
+              <Link to="/fifth-revolution" className="btn-secondary mt-10">
                 Explore The 5th Revolution
                 <ArrowRight size={18} />
               </Link>
             </ScrollReveal>
           </div>
+
+          {/* Graphic — fully contained, stat callout sits below (no overlap) */}
+          <ScrollReveal direction="right" className="lg:col-span-5 lg:order-1">
+            <div className="rounded-2xl bg-navy p-4 shadow-card-hover">
+              <img
+                src="/images/gap-chart.jpg"
+                alt="A chart showing AI capability accelerating while human capability lags, and the widening gap between them"
+                className="w-full h-auto rounded-xl object-contain"
+                loading="lazy"
+              />
+            </div>
+            <div className="mt-4 flex items-center gap-4 bg-white rounded-2xl px-6 py-5 shadow-card border-l-4 border-gold">
+              <p className="font-sora font-bold text-3xl text-gold leading-none">
+                <StatCounter value={1300} suffix="+" />
+              </p>
+              <p className="text-slate-custom text-sm leading-snug">
+                documented AI transitions in the White Whale evidence bank
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

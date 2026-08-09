@@ -7,6 +7,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/Scroll
 import { StatCounter } from "@/components/StatCounter";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const headlineStats = [
   { value: 1300, prefix: "", suffix: "+", decimals: 0, label: "source-audited cases" },
@@ -91,7 +92,7 @@ export default function FifthRevolution() {
             title={<>A technology that changes how we <span className="text-gold">understand ourselves</span></>}
             className="mb-8"
           />
-          <div className="space-y-5 text-slate-custom leading-relaxed text-lg">
+          <div className="space-y-5 text-slate-custom leading-relaxed text-lg max-w-2xl">
             <ScrollReveal delay={0.05}>
               <p>
                 Every so often, a technology arrives that doesn't just change what we can do. It changes
@@ -160,7 +161,7 @@ export default function FifthRevolution() {
             className="mb-6"
           />
           <ScrollReveal delay={0.1}>
-            <p className="text-slate-custom leading-relaxed text-lg">
+            <p className="text-slate-custom leading-relaxed text-lg max-w-2xl">
               Every lasting change in an organisation runs on trust, and trust between people who are
               different from one another is the hardest kind to build. The Mutuality Framework names six
               trust archetypes and six obstacles, replacing the vague instruction to "build trust" with
@@ -214,7 +215,7 @@ export default function FifthRevolution() {
             title={<>Deliberately collaborative, and <span className="text-gold">expanding</span></>}
             className="mb-6"
           />
-          <div className="space-y-5 text-slate-custom leading-relaxed text-lg">
+          <div className="space-y-5 text-slate-custom leading-relaxed text-lg max-w-2xl">
             <ScrollReveal delay={0.05}>
               <p>
                 The 5th Revolution is deliberately collaborative, and it is expanding: research on
@@ -253,6 +254,7 @@ export default function FifthRevolution() {
       </section>
 
       <Faq items={faqs} dark title={<>The 5th Revolution, <span className="text-gold">explained</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "Culture Audits", href: "/services/culture-audits" },

@@ -4,6 +4,7 @@ import { PageHero } from "@/components/PageHero";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const segments = [
   {
@@ -101,6 +102,7 @@ export default function WhoWeHelp() {
       </section>
 
       <Faq items={faqs} dark title={<>Common <span className="text-gold">questions</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "Services", href: "/services" },

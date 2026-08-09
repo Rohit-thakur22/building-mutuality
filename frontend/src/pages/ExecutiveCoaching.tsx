@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const details = [
   { icon: Clock, label: "Session length", value: "60–90 minutes" },
@@ -98,6 +99,7 @@ export default function ExecutiveCoaching() {
       </section>
 
       <Faq items={faqs} title={<>Coaching <span className="text-gold">questions</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "Leadership Programmes", href: "/services/programmes" },

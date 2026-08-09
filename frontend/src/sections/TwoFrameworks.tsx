@@ -38,6 +38,14 @@ export function TwoFrameworks() {
                 archetypes, six obstacles, measured through the{" "}
                 <span className="text-gold">Mutuality Trust Index</span>.
               </p>
+              <div className="flex flex-wrap gap-3 mt-6">
+                {["Six archetypes", "Six obstacles", "Mutuality Trust Index"].map((t) => (
+                  <span key={t} className="inline-flex items-center gap-2 text-white/60 text-xs font-medium">
+                    <span className="w-2.5 h-2.5 rounded-full bg-pillar-mutuality" />
+                    {t}
+                  </span>
+                ))}
+              </div>
             </div>
           </StaggerItem>
 

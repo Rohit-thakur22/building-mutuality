@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const values = [
   { title: "Respect", body: "We begin from the belief that every person brings intelligence, experience and worth to the table." },
@@ -63,6 +64,7 @@ export default function Ethos() {
           { q: "Who are the Traditional Custodians of the land Building Mutuality works on?", a: "The Gadigal people of the Eora Nation, Traditional Custodians of Pirrama." },
         ]}
       />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "About Matthew Byrne", href: "/about" },

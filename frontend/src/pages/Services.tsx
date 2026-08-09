@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const services = [
   {
@@ -139,6 +140,7 @@ export default function Services() {
       </section>
 
       <Faq items={faqs} title={<>Service <span className="text-gold">questions</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "The 5th Revolution", href: "/fifth-revolution" },

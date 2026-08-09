@@ -6,6 +6,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/Scroll
 import { StatCounter } from "@/components/StatCounter";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const range = [
   {
@@ -128,6 +129,7 @@ export default function Programmes() {
       </section>
 
       <Faq items={faqs} title={<>Programme <span className="text-gold">questions</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "Executive Coaching", href: "/services/executive-coaching" },

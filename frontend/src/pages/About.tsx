@@ -8,6 +8,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 import { EASE } from "@/lib/motion";
 
 const badges = [
@@ -159,6 +160,7 @@ export default function About() {
           { q: "What is HI-AI Converge?", a: "A 1,000-delegate event Matthew convenes at ICC Sydney in October 2026, with 8,000 NSW high-school students voting on the questions that matter most." },
         ]}
       />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "The 5th Revolution", href: "/fifth-revolution" },

@@ -10,13 +10,16 @@ export function Marquee({ items, className = "" }: MarqueeProps) {
       className={`relative overflow-hidden ${className}`}
       data-testid="marquee"
     >
-      <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+      <div
+        className="flex w-max hover:[animation-play-state:paused]"
+        style={{ animation: "marquee 55s linear infinite" }}
+      >
         {doubled.map((item, i) => (
-          <div key={i} className="flex items-center gap-8 pr-8">
-            <span className="font-sora text-2xl md:text-4xl font-semibold text-white/25 whitespace-nowrap">
+          <div key={i} className="flex items-center gap-12 pr-12">
+            <span className="font-sora text-xl md:text-2xl font-semibold text-white/45 whitespace-nowrap tracking-wide">
               {item}
             </span>
-            <span className="text-gold text-2xl md:text-4xl">✦</span>
+            <span className="text-gold/60 text-lg">✦</span>
           </div>
         ))}
       </div>

@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const categories = [
   { icon: Newspaper, title: "The White Whale & 5th Revolution Research", desc: "The five-part research series, now the anchor category.", anchor: "#research" },
@@ -146,6 +147,7 @@ export default function Resources() {
           { q: "Where can I read the White Whale research in full?", a: "The White Whale & 5th Revolution Research category on this page links to every instalment." },
         ]}
       />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "The 5th Revolution", href: "/fifth-revolution" },

@@ -6,7 +6,8 @@ export function SmoothScroll() {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReduced) return;
+    const bypass = window.location.search.includes("nolenis");
+    if (prefersReduced || bypass) return;
 
     const lenis = new Lenis({
       duration: 1.1,

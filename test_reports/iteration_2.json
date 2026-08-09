@@ -1,0 +1,25 @@
+{
+  "summary": "Iteration 2 — layout/UX correction pass verified. Homepage renders fully past the hero with ALL required sections (proof-strip, testimonials, fifth-rev-intro, two-frameworks, who-we-help preview, services-preview, faq-section, final-cta, explore-next) and ZERO console errors. All 15 routes load with 0 console errors each. Explicit confirmation that scrolling past the hero exposes every section (screenshot taken at bottom of / showing 'Questions, answered' FAQ with cream background). Services-preview shows all 4 cards with correct testids. Proof strip has lead paragraph + 3 stat blocks (1,300+, 2 decades, 5) + separated marquee band containing Perenti/The ATO/Calvary/McDonald's/DFAT/AGSM (legible white on navy). Gap chart img present with alt containing 'AI capability'. Both framework cards show tag rows (Six archetypes / Six obstacles / Mutuality Trust Index for Mutuality card; 4 pillar dots for HI card). FAQ background is cream (rgb(245,241,232)) — no dead gap before it. CTA band with 'Start a Conversation' -> /contact confirmed on all 11 requested content pages (/who-we-help, /fifth-revolution, /services, /services/programmes, /services/executive-coaching, /services/culture-audits, /services/hi-accreditation, /about, /book, /ethos, /resources) and positioned BEFORE ExploreNext row (verified on HI page). FAQ accordion still expands. HI Accreditation still shows Coming Soon + Dignified Transition Test + 7+ domain cards. Mobile menu opens/closes. Responsive @390px: proof stats stack to single column (358px), framework cards stack, services stack, and in fifth-rev-intro the heading appears BEFORE the chart image (textFirst: True, headingTop 2466 < imgTop 3284). No horizontal overflow on /, /services, /services/hi-accreditation, /fifth-revolution. One minor overflow on /contact (24px) caused by decorative gold blur div.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/contact @390px", "issues": ["24px horizontal overflow at 390px width caused by a decorative absolute-positioned blur div ('absolute -top-24 -right-24 w-96 h-96 bg-gold/10 rounded-full blur-3xl'). Its parent container is not overflow-hidden on mobile. Fix: add 'overflow-hidden' to the page hero / contact-form section wrapper on /contact, or constrain the decorative blob for < md. All other 14 routes have 0 horizontal overflow at 390px."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [
+    "MINOR: Clip decorative gold blur blob on /contact to prevent 24px horizontal overflow at 390px (add overflow-hidden to its wrapper)."
+  ],
+  "critical_code_review_comments": [
+    "ProofStrip stat StatCounter renders numeric values only — the label 'source-audited cases, and growing' for stat 1,300+ is fine but ensure prefers-reduced-motion users still see the final value (StatCounter appears to animate on view; verify with reduced-motion media query if not already handled).",
+    "CTABand default eyebrow and buttonLabel are identical ('Start a Conversation') — small copy duplication in the band; acceptable but consider distinct eyebrow (e.g. 'Ready when you are')."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "~99% (1 minor mobile overflow)"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Homepage now uses tone='cream' Faq — bg confirmed rgb(245,241,232). Contact form testids: input-first-name, input-last-name, input-email, input-organisation, select-challenge, input-message, contact-submit, contact-success (unchanged from iteration_1). ExploreNext heading text is not exactly 'Explore next' — use [data-testid='explore-next'] to locate reliably. Only remaining known issue: /contact 24px horizontal overflow at 390px from a decorative gold blur div — cosmetic, not blocking."
+}

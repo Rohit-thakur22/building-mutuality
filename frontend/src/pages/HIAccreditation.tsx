@@ -6,6 +6,7 @@ import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/Scroll
 import { StatCounter } from "@/components/StatCounter";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const caseStats = [
   { pre: "1 in ", value: 5, suf: "", label: "organisations expected to use AI to flatten structures (Gartner), potentially removing over half of middle-management roles." },
@@ -193,6 +194,7 @@ export default function HIAccreditation() {
       </section>
 
       <Faq items={faqs} title={<>HI Accreditation <span className="text-gold">questions</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "Culture Audits", href: "/services/culture-audits" },

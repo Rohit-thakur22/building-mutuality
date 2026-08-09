@@ -30,8 +30,8 @@ export function HomeHero() {
           alt="Human intelligence and AI convergence"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy" />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy/85 via-navy/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/85 via-navy/70 to-navy" />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/55 to-transparent" />
       </motion.div>
 
       <motion.div

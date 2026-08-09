@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { Faq } from "@/components/Faq";
 import { ExploreNext } from "@/components/ExploreNext";
+import { CTABand } from "@/components/CTABand";
 
 const measures = [
   {
@@ -126,6 +127,7 @@ export default function CultureAudits() {
       </section>
 
       <Faq items={faqs} title={<>Culture audit <span className="text-gold">questions</span></>} />
+      <CTABand />
       <ExploreNext
         links={[
           { label: "The 5th Revolution", href: "/fifth-revolution" },

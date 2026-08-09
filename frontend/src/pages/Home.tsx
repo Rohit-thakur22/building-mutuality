@@ -51,7 +51,11 @@ export default function Home() {
       <TwoFrameworks />
       <WhoWeHelpPreview />
       <ServicesPreview />
-      <Faq items={faqs} title={<>Questions, <span className="text-gold">answered</span></>} />
+      <Faq
+        tone="cream"
+        items={faqs}
+        title={<>Questions, <span className="text-gold">answered</span></>}
+      />
       <FinalCTA
         eyebrow="Ready to Align Your AI Strategy?"
         title={<>The question isn't whether AI will reshape your organisation</>}
