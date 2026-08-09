@@ -1,0 +1,36 @@
+{
+  "summary": "Frontend-only verification of proof strip marquee fix and paragraph width. All targeted checks pass: marquee-track has computed animationName='marqueeX' with animationDuration='32s' (linear infinite), the 6 client wordmarks are duplicated (12 items) for seamless loop, plate text uses uppercase bold Sora 20px in white/45 with hover to gold (legible plates in bordered pills), and the White Whale paragraph now spans 1216px / 1280px container (~95%) matching the stats-grid width (1216px). No regressions: interviews section sits between fifth-rev-intro and two-frameworks, proof-strip present, homepage renders without console errors.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_details": {
+    "marquee_animation": {
+      "animationName": "marqueeX",
+      "animationDuration": "32s",
+      "iterationCount": "infinite",
+      "timingFunction": "linear",
+      "itemCount": 12,
+      "textsOrdered": ["Perenti","The ATO","Calvary","McDonald's","DFAT","AGSM","Perenti","The ATO","Calvary","McDonald's","DFAT","AGSM"],
+      "trackWidth_px": 2394
+    },
+    "plate_style": { "color": "rgba(255,255,255,0.45)", "fontWeight": 700, "fontSize": "20px", "textTransform": "uppercase" },
+    "paragraph_width": { "containerWidth": 1280, "gridWidth": 1216, "paragraphWidth": 1216, "ratio_vs_container": "95%", "maxWidth": "none" },
+    "section_order_verified": { "fifth-rev-intro_top": 5290.75, "interviews_top": 6114.75, "two-frameworks_top": 6967.25 },
+    "console_errors": "none captured"
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Marquee.tsx duplicates loop items with only index as key; both halves use aria-hidden correctly on the duplicate (i >= items.length) which is good.",
+    "index.css @keyframes marqueeX is defined outside the @layer utilities block (technically closed before it) which is fine, but consider moving into @layer or documenting to avoid future purge concerns."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "n/a", "frontend": "100%" },
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Marquee animation wiring verified via getComputedStyle (animationName=marqueeX, 32s linear infinite). Paragraph max-w-none applied and paragraph clientWidth aligns with stats grid. StickyConnect testid exists in code (mounted via Layout) - it only becomes visible after scroll; not part of this iteration's asks so not deeply exercised."
+}

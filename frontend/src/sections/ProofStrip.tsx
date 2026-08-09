@@ -44,7 +44,7 @@ export function ProofStrip() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="max-w-3xl text-white/45 text-sm leading-relaxed mt-10 pt-8 border-t border-white/10"
+            className="max-w-none text-white/45 text-sm leading-relaxed mt-10 pt-8 border-t border-white/10"
           >
             Home of the <span className="text-gold/90 font-medium">White Whale</span>,
             the longitudinal AI implementation segmentation research project that
@@ -57,12 +57,12 @@ export function ProofStrip() {
         </div>
       </div>
 
-      {/* Marquee band — separated tone */}
+      {/* Logo wall — continuous loop */}
       <div className="bg-navy border-t border-white/10">
-        <div className="container-custom pt-8 pb-2">
+        <div className="container-custom pt-10 pb-4">
           <span className="eyebrow">Programmes delivered with</span>
         </div>
-        <div className="py-6">
+        <div className="pb-10 pt-2">
           <Marquee items={clients} />
         </div>
       </div>
